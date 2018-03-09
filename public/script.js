@@ -167,5 +167,7 @@ for (var i = 0; i < 3; i++) {
     var b = Math.floor(Math.random() * m)
     matrix[a][b] = 5
 }
+/*
 https://github.com/GolDrag/Programming3.git
 https://github.com/GolDrag/Programming3
+*/
