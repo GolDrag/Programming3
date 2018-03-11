@@ -32,10 +32,10 @@ function setup() {
 
             }
             else if (matrix[y][x] == 4) {
-                vagrer.push(new Vagr(x, y))
+                vagrer.push(new Vagr(x, y,4))
             }
             else if (matrix[y][x] == 5) {
-                napastakner.push(new Napastak(x, y))
+                napastakner.push(new Napastak(x, y,5))
             }
         }
     }
@@ -87,7 +87,7 @@ function draw() {
         if (gishatichner[i].energy >= 25) {
             gishatichner[i].bazmanal()
         }
-        else if (gishatichner[i].energy <= 0) {
+        else if (gishatichner[i].energy <= 0 ||gishatichner[i].tariq==25) {
             gishatichner[i].mahanal(i)
         }
     }
@@ -98,7 +98,7 @@ function draw() {
         if (vagrer[i].energy >= 28) {
             vagrer[i].bazmanal()
         }
-        else if (vagrer[i].energy <= 0) {
+        else if (vagrer[i].energy <= 0 || vagrer[i].tariq==40) {
             vagrer[i].mahanal(i)
         }
     }
@@ -123,7 +123,7 @@ function draw() {
         if (napastakner[i].energy >= 13) {
             napastakner[i].bazmanal();
         }
-        else if (napastakner[i].energy <= 0) {
+        else if (napastakner[i].energy <= 0 || napastakner[i].tariq==10) {
 
             napastakner[i].mahanal(i);
         }

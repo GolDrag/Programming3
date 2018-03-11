@@ -92,6 +92,7 @@ class Xotaker extends KendaniEak {
     constructor(x, y, index) {
         super(x, y, index);
         this.tariq = 0;
+        this.energy=10
     }
     stanalNorKordinatner() {
         this.directions = [

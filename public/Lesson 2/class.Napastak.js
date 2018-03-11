@@ -115,6 +115,7 @@ class Napastak extends KendaniEak {
   constructor(x, y, index) {
     super(x, y, index)
     this.tariq = 0
+    this.energy=10
   }
   stanalNorKordinatner() {
     this.directions = [
@@ -155,6 +156,7 @@ class Napastak extends KendaniEak {
     return found;
   }
   sharjvel() {
+    this.tariq++
     this.stanalNorKordinatnerSharj();
     var datarkvandakner = this.yntrelVandakSharj(0);
     var norvandak = random(datarkvandakner);
@@ -167,6 +169,7 @@ class Napastak extends KendaniEak {
     }
   }
   eat() {
+    this.tariq++
     this.stanalNorKordinatner();
     var datarkvandakner = this.yntrelVandak(1);
     var norvandak = random(datarkvandakner);
@@ -192,10 +195,11 @@ class Napastak extends KendaniEak {
   }
 
   bazmanal() {
+    this.tariq++
     this.energy = 10;
     var norVandak = random(this.yntrelVandak(0));
     if (norVandak) {
-      var nornapastak = new Napastak(norVandak[0], norVandak[1]);
+      var nornapastak = new Napastak(norVandak[0], norVandak[1],5);
       napastakner.push(nornapastak);
       matrix[norVandak[1]][norVandak[0]] = 5;
     }
@@ -205,4 +209,5 @@ class Napastak extends KendaniEak {
     napastakner.splice(i, 1);
 
   }
+
 }

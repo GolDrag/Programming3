@@ -5,6 +5,7 @@ class Gishatich {
         this.energy = 20;
         this.directions = [];
         this.index = 3;
+        this.tariq = 0
     }
 
     stanalNorKordinatner() {
@@ -34,6 +35,7 @@ class Gishatich {
         return found;
     }
     sharjvel() {
+        this.tariq++
         this.stanalNorKordinatner();
         var datarkvandakner = this.yntrelVandak(0, 0);
         var norvandak = random(datarkvandakner);
@@ -49,6 +51,7 @@ class Gishatich {
         }
     }
     eat() {
+        this.tariq++
         this.stanalNorKordinatner();
         var datarkvandakner = this.yntrelVandak(2, 5);
         var norvandak = random(datarkvandakner);
@@ -79,6 +82,7 @@ class Gishatich {
     }
 
     bazmanal() {
+        this.tariq++
         this.energy = 20;
         var norVandak = random(this.yntrelVandak(0));
         if (norVandak) {
