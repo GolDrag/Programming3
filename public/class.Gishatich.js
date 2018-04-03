@@ -1,11 +1,14 @@
 class Gishatich {
-    constructor(x, y) {
+    constructor(x, y, index, xy) {
         this.x = x;
         this.y = y;
         this.energy = 20;
         this.directions = [];
-        this.index = 3;
+        this.index = index;
         this.tariq = 0
+        this.multiply = 0;
+        this.xy = xy
+        this.ws = 0
     }
 
     stanalNorKordinatner() {
@@ -35,61 +38,169 @@ class Gishatich {
         return found;
     }
     sharjvel() {
+        this.ws++
         this.tariq++
         this.stanalNorKordinatner();
         var datarkvandakner = this.yntrelVandak(0, 0);
         var norvandak = random(datarkvandakner);
         if (norvandak) {
-            matrix[this.y][this.x] = 0;
-            matrix[norvandak[1]][norvandak[0]] = 3;
-            this.x = norvandak[0];
-            this.y = norvandak[1];
-            this.energy--;
+            if (season=="winter"&&this.ws>=4) {
+                if (this.xy == 3) {
+                    matrix[this.y][this.x] = 0;
+                    matrix[norvandak[1]][norvandak[0]] = 3;
+                    this.x = norvandak[0];
+                    this.y = norvandak[1];
+                    this.energy--;
+                }
+                else if (this.xy == 3.1) {
+    
+                    matrix[this.y][this.x] = 0;
+                    matrix[norvandak[1]][norvandak[0]] = 3.1;
+                    this.x = norvandak[0];
+                    this.y = norvandak[1];
+                    this.energy--;
+                }
+            }
+            else if (season!="winter"&&this.ws>=1&&rain==false) {
+                if (this.xy == 3) {
+                    matrix[this.y][this.x] = 0;
+                    matrix[norvandak[1]][norvandak[0]] = 3;
+                    this.x = norvandak[0];
+                    this.y = norvandak[1];
+                    this.energy--;
+                }
+                else if (this.xy == 3.1) {
+    
+                    matrix[this.y][this.x] = 0;
+                    matrix[norvandak[1]][norvandak[0]] = 3.1;
+                    this.x = norvandak[0];
+                    this.y = norvandak[1];
+                    this.energy--;
+                }
+            }  
+            else if (rain=true&&this.ws>=2) {
+                if (this.xy == 3) {
+                    matrix[this.y][this.x] = 0;
+                    matrix[norvandak[1]][norvandak[0]] = 3;
+                    this.x = norvandak[0];
+                    this.y = norvandak[1];
+                    this.energy--;
+                }
+                else if (this.xy == 3.1) {
+    
+                    matrix[this.y][this.x] = 0;
+                    matrix[norvandak[1]][norvandak[0]] = 3.1;
+                    this.x = norvandak[0];
+                    this.y = norvandak[1];
+                    this.energy--;
+                }
+            }
         }
         else {
-            this.energy--;
+
         }
     }
     eat() {
         this.tariq++
         this.stanalNorKordinatner();
-        var datarkvandakner = this.yntrelVandak(2, 5);
-        var norvandak = random(datarkvandakner);
-        if (norvandak) {
-            matrix[this.y][this.x] = 0;
-            matrix[norvandak[1]][norvandak[0]] = 3;
-            this.x = norvandak[0];
-            this.y = norvandak[1];
-            this.energy = this.energy + 2
-            for (var c in xotakerner) {
-
-                if (xotakerner[c].x == this.x && xotakerner[c].y == this.y) {
-                    xotakerner.splice(c, 1);
-                    break;
+        if (this.xy == 3) {
+            var datarkvandakner = this.yntrelVandak(2, 5);
+            var norvandak = random(datarkvandakner);
+            if (norvandak) {
+                matrix[this.y][this.x] = 0;
+                matrix[norvandak[1]][norvandak[0]] = 3;
+                this.x = norvandak[0];
+                this.y = norvandak[1];
+                this.energy = this.energy + 2
+                for (var c in xotakerner) {
+                    if (xotakerner[c].x == this.x && xotakerner[c].y == this.y) {
+                        xotakerner.splice(c, 1);
+                        break;
+                    }
+                }
+                for (var c in napastakner) {
+                    if (napastakner[c].x == this.x && napastakner[c].y == this.y) {
+                        napastakner.splice(c, 1);
+                        break;
+                    }
                 }
             }
-            for (var c in napastakner) {
-
-                if (napastakner[c].x == this.x && napastakner[c].y == this.y) {
-                    napastakner.splice(c, 1);
-                    break;
-                }
+            else {
+                this.sharjvel();
             }
         }
-        else {
-            this.sharjvel();
+        else if (this.xy == 3.1) {
+            var datarkvandakner = this.yntrelVandak(2, 5);
+            var norvandak = random(datarkvandakner);
+            if (norvandak) {
+                matrix[this.y][this.x] = 0;
+                matrix[norvandak[1]][norvandak[0]] = 3.1;
+                this.x = norvandak[0];
+                this.y = norvandak[1];
+                this.energy = this.energy + 2
+                for (var c in xotakerner) {
+
+                    if (xotakerner[c].x == this.x && xotakerner[c].y == this.y) {
+                        xotakerner.splice(c, 1);
+                        break;
+                    }
+                }
+                for (var c in napastakner) {
+
+                    if (napastakner[c].x == this.x && napastakner[c].y == this.y) {
+                        napastakner.splice(c, 1);
+                        break;
+                    }
+                }
+            }
+            else {
+                this.sharjvel();
+            }
         }
     }
 
     bazmanal() {
+        this.multiply++
         this.tariq++
-        this.energy = 20;
-        var norVandak = random(this.yntrelVandak(0));
-        if (norVandak) {
-            var gishatich = new Gishatich(norVandak[0], norVandak[1]);
-            gishatichner.push(gishatich);
-            matrix[norVandak[1]][norVandak[0]] = 3;
+        if (this.xy == 3) {
+            var norVandak = random(this.yntrelVandak(0));
+            var partner = random(this.yntrelVandak(3.1));
+            if (norVandak && this.multiply >= 10 && partner) {
+                this.energy = 20;
+                this.multiply = 0
+                var s = Math.floor(Math.random() * 100)
+                if (s < 50) {
+                    var gishatich = new Gishatich(norVandak[0], norVandak[1], 3, 3);
+                    gishatichner.push(gishatich);
+                    matrix[norVandak[1]][norVandak[0]] = 3;
+                }
+                else if (s > 50) {
+                    var gishatich = new Gishatich(norVandak[0], norVandak[1], 3, 3.1);
+                    gishatichner.push(gishatich);
+                    matrix[norVandak[1]][norVandak[0]] = 3.1;
+                }
+            }
         }
+        else if (this.xy == 3.1) {
+            var norVandak = random(this.yntrelVandak(0));
+            var partner = random(this.yntrelVandak(3));
+            if (norVandak && this.multiply >= 10 && partner) {
+                this.energy = 200;
+                this.multiply = 0
+                var s = Math.floor(Math.random() * 100)
+                if (s < 50) {
+                    var gishatich = new Gishatich(norVandak[0], norVandak[1], 3, 3);
+                    gishatichner.push(gishatich);
+                    matrix[norVandak[1]][norVandak[0]] = 3;
+                }
+                else if (s > 50) {
+                    var gishatich = new Gishatich(norVandak[0], norVandak[1], 3, 3.1);
+                    gishatichner.push(gishatich);
+                    matrix[norVandak[1]][norVandak[0]] = 3.1;
+                }
+            }
+        }
+
     }
     mahanal(i) {
         matrix[this.y][this.x] = 0;
@@ -98,3 +209,4 @@ class Gishatich {
     }
 
 }
+
