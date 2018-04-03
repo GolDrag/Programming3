@@ -1,4 +1,4 @@
-class Napastak {
+/*class Napastak {
   constructor(x, y) {
     this.x = x;
     this.y = y;
